@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Reset</title>
+    <style>
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            background-color: #f5f6fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2f3640;
+            text-align: center;
+        }
+        p {
+            color: #353b48;
+            line-height: 1.5;
+            text-align: center;
+        }
+        .code {
+            display: block;
+            margin: 20px auto;
+            padding: 15px;
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            font-weight: bold;
+            width: fit-content;
+            background-color: #dcdde1;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: #718093;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Password Reset Request</h2>
+        <p>Hello <%= name %>,</p>
+        <p>You requested to reset your password. Use the code below to reset it. It will expire in 10 minutes.</p>
+        <span class="code"><%= code %></span>
+        <p>If you didn't request this, you can safely ignore this email.</p>
+        <div class="footer">
+            &copy; <%= new Date().getFullYear() %> YourAppName. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>
