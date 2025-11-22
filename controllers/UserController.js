@@ -113,9 +113,13 @@ export const googleLogin = async (req, res) => {
 
     if (!user) {
       // Split full name into firstName and lastName
-      const parts = payload.name?.trim().split(" ") || [];
-      const firstName = parts[0] || "";
-      const lastName = parts.slice(1).join(" ") || "";
+            const fullName =
+        payload.name ||
+        `${payload.given_name || ""} ${payload.family_name || ""}`.trim() ||
+        email.split("@")[0];
+
+      const [firstName, ...rest] = fullName.split(" ");
+      const lastName = rest.join(" ") || "";
 
       user = await User.create({
         firstName,
@@ -123,6 +127,7 @@ export const googleLogin = async (req, res) => {
         email,
         password: null,
       });
+
     }
 
     const jwtToken = jwt.sign(
