@@ -39,7 +39,7 @@ export const SignUp = async (req , res) => {
         const token = jwt.sign(
             { id: newUser._id } , 
             process.env.JWT_SECRET , 
-            { expiresIn: '1h' }
+            { expiresIn: '90d' }
         )
         
 
@@ -82,7 +82,7 @@ export const Login = async (req , res) => {
         const token = jwt.sign(
             { id: user._id  , role: user.role } ,
             process.env.JWT_SECRET ,
-            { expiresIn: '7h' }
+            { expiresIn: '90d' }
         )
 
         res.status(200).json({
@@ -97,6 +97,8 @@ export const Login = async (req , res) => {
 }
 export const googleLogin = async (req, res) => {
   try {
+    
+
     const { token } = req.body;
     if (!token) {
       return res.status(400).json({ message: "Invalid token" });
@@ -133,7 +135,7 @@ export const googleLogin = async (req, res) => {
     const jwtToken = jwt.sign(
       { id: user._id, role: user.role },
       process.env.JWT_SECRET,
-      { expiresIn: "7h" }
+      { expiresIn: "90d" }
     );
 
     res.status(200).json({

@@ -13,13 +13,12 @@ export const auth = async (req, res, next) => {
     // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // Optional: fetch user from DB (if you’ll need user info later)
     const user = await User.findById(decoded.id).select("-password");
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    req.user = user; // store user object on req
+    req.user = user; 
     next();
   } catch (err) {
     console.error("Auth error:", err.message);

@@ -31,5 +31,11 @@ app.use('/api' , UserRoutes)
 app.use('/api/courses' , CourseRoutes)
 
 app.listen(PORT , () => {
-    console.log(`Server is running on Localhost:${PORT}`);
+    console.log(`Server is running on Localhost:${PORT} `);
 })
+
+
+
+
+
+
